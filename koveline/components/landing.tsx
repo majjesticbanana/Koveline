@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { units, subject, type Unit } from "@/lib/quizzes";
+import { totalDefinitions } from "@/lib/definitions";
 
 function unitProgress(u: Unit): number {
   try {
@@ -53,6 +55,20 @@ export function Landing() {
           </p>
         </div>
       </section>
+
+      {/* Definitions — second quiz */}
+      <Link
+        href="/definitions"
+        className="group relative flex items-center gap-4 overflow-hidden rounded-[22px] border border-lagoon-soft bg-gradient-to-br from-lagoon-soft to-[#eef1ea] p-[22px] transition-all duration-200 hover:-translate-y-[3px] hover:shadow-warm"
+      >
+        <span className="grid h-14 w-14 flex-shrink-0 place-items-center rounded-[16px] bg-lagoon text-2xl text-white shadow-warm-sm">📖</span>
+        <div className="min-w-0 flex-1">
+          <div className="font-display text-[0.74rem] font-bold tracking-wide text-lagoon-deep">NEW · A SECOND QUIZ</div>
+          <h3 className="font-display text-[1.3rem] font-bold leading-tight">Definitions</h3>
+          <p className="text-[0.92rem] text-muted">Flashcard every key term — Grade 9 &amp; 10 · {totalDefinitions} terms</p>
+        </div>
+        <span className="text-[1.3rem] text-lagoon transition-transform group-hover:translate-x-1">→</span>
+      </Link>
 
       {/* Units */}
       <div id="units" className="mb-5 mt-[34px] flex items-baseline gap-3.5">
